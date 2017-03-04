@@ -1,0 +1,47 @@
+package generador;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+
+@RunWith(value = Parameterized.class)
+public class GarbellTest {
+	private int[] arrayEsperat;
+	private int[] ArrayPrimersTrobats;
+	private int max;
+	
+	@Parameters
+    public static Collection<Object[]> setParameters() { 
+        
+    	  Collection<Object[]> params = new ArrayList<>();
+
+        // Carregarem els paràmetres externs aquí:
+        params.add(new Object[] { 20, new int[]{2,3,5,7,11,13,17,19}});
+        params.add(new Object[] { 24, new int[]{2,3,5,7,11,13,17,19,23}});
+      
+        return params;
+        }
+	/**JGarcia**/
+
+	public GarbellTest(int max, int[] arrayEsperat)
+	{
+		this.max = max;
+		this.arrayEsperat = arrayEsperat;
+	}
+	
+	@Test
+	public void test() {
+		int[]  ArrayPrimersEsperats = {2,3,5,7,11,13,17,19};
+		int[]  ArrayPrimersTrobats = Garbell.obtenirPrimers(this.max);
+		//fail("Not yet implemented");   Aquesta línia també la deixarem comentada
+		
+		assertEquals(ArrayPrimersEsperats.length, ArrayPrimersTrobats.length);
+	}
+}
